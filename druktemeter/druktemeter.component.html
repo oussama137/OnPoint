@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Document</title>
+  
+</head>
+  <body>
+        <section id="banner">
+            <a href="/"><img class="logo" src="../../assets/images/logo.png" alt="logo"></a>
+            <div id="sideNav">
+                <nav>
+                    <label id="hamburger" for="toggle"><img src="../../assets/images/menu.png" alt=""></label>
+                    <input type="checkbox" id="toggle"/>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="/">HOME</a></li>
+                            <li><a routerLink="/reservatie" routerLinkActive="active" ariaCurrentWhenActive="page">RESERVEREN</a></li>
+                            <li><a routerLink="/druktemeter" routerLinkActive="active" ariaCurrentWhenActive="page">DRUKTEMETER</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="banner-text">
+                <h1>Druktemeter</h1>
+                <p>De onderstaande gegevens zijn gebaseerd op live aantallen van onze kapperzaak</p>
+            </div>
+        </section>
+        <section id="druktemeter">
+            <div class="title-text">
+                <div></div>
+                <p>DRUKTEMETER</p>
+                <h1>Wachtrij voor een knipbeurt</h1>
+            </div>
+            <div class="live-icon" *ngIf="liveAantal > 1">
+                <h1>Er zitten op dit moment {{liveAantal}} personen te wachten.</h1>
+                <iframe src="https://giphy.com/embed/wvP4x67EnIhWiCztAf" frameBorder="0" class="giphy-embed"></iframe>
+            </div>
+            <div class="live-icon" *ngIf="liveAantal == 1">
+                <h1>Er zit op dit moment {{liveAantal}} persoon te wachten.</h1>
+                <iframe src="https://giphy.com/embed/wvP4x67EnIhWiCztAf" frameBorder="0" class="giphy-embed"></iframe>
+            </div>
+            <div class="live-icon" *ngIf="liveAantal == 0">
+                <h1>Er zitten geen mensen te wachten.</h1>
+                <iframe src="https://giphy.com/embed/wvP4x67EnIhWiCztAf" frameBorder="0" class="giphy-embed"></iframe>
+            </div>
+            <div class="banner-btn">
+                <i *ngFor='let in of counter() ;let i = index'><img src="../../assets/images/4684820481621272881-128.png" alt=""></i>
+            </div>
+        </section>
+        <div class="queryContent">
+            <h2>Aantal mensen die op dit moment zitten te wachten:</h2>
+            <h1 >{{liveAantal}}</h1>
+        </div>
+        <section id="Grafic">
+            <div class="title-text">
+                <p>Grafiek</p>
+                <h1>Gemiddelde drukte in een week</h1>
+            </div>
+            <div class="chart-container">
+                <canvas id="canvas" style="width: 100%; height: 48vh;">{{ chart }}</canvas>
+            </div>
+            <div class="text-time">
+                <p><i class="fa-solid fa-stopwatch"></i>Mensen besteden hier gewoonlijk 25 min. tot 1 uur.</p>
+            </div>
+        </section> 
+        <section #target id="footer">
+            <img src="../../assets/images/footer-img.png" alt="footer" class="footer-img">
+            <div class="title-text">
+                <p>CONTACT</p>
+                <h1>Bezoek vandaag onze kapperzaak</h1>
+            </div>
+            <div class="footer-row">
+                <div class="footer-left">
+                    <h1>Openingsuren</h1>
+                    <p><i class="fa-regular fa-clock"></i>Dinsdag tot vrijdag - 10u tot 19u</p>
+                    <p><i class="fa-regular fa-clock"></i>Zaterdag en zondag - 11u tot 20u</p>
+                </div>
+                <div class="footer-right">
+                    <h1>Neem contact op</h1>
+                    <p>Ellermanstraat 33, 2060 Antwerpen<i class="fa-solid fa-location-dot"></i></p>
+                    <p>Kapperzaak@gmail.com<i class="fa-regular fa-envelope"></i></p>
+                    <p>+32418279370<i class="fa-solid fa-phone"></i></p>
+                </div>
+            </div>
+            <div class="socials-links">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>                
+                <i class="fa-brands fa-twitter"></i>
+                <p>Copyright OnPoint.</p>
+            </div>
+        </section>
+  </body>
+</html> 
