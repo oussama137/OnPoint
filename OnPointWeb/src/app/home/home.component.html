@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<html>
+    <body>
+        <section id="banner">
+            <img class="logo" src="../../assets/images/logo.png" alt="logo">
+            <div id="sideNav">
+                <nav>
+                    <label id="hamburger" for="toggle"><img src="../../assets/images/menu.png" alt=""></label>
+                    <input type="checkbox" id="toggle"/>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a routerLink="/reservatie" routerLinkActive="active" ariaCurrentWhenActive="page">RESERVEREN</a></li>
+                            <li><a routerLink="/druktemeter" routerLinkActive="active" ariaCurrentWhenActive="page">DRUKTEMETER</a></li>
+                            <li><a (click)="scrollToElement(target)" style="cursor: pointer;">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="banner-text">
+                <h1>Hair Studio</h1>
+                <p>Stijl jouw haar is stijl jouw leven</p>
+                <div class="banner-btn">
+                    <a routerLink="/reservatie" routerLinkActive="active" ariaCurrentWhenActive="page"><span></span>Reserveren</a>
+                    <a routerLink="/druktemeter" routerLinkActive="active" ariaCurrentWhenActive="page"><span></span>Druktemeter</a>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="feature">
+            <div class="title-text">
+                <div></div>
+                <p>FEATURES</p>
+                <h1>Waarom voor ons kiezen?</h1>
+            </div>
+            <div class="feature-box">
+                <div class="features">
+                    <h1>Ervaren personeel</h1>
+                    <div class="feature-desc">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="feature-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ut aperiam et odio, repellat amet ea quis atque enim sit debitis quaerat. Quidem mollitia illum error cumque quasi ea voluptate!</p>
+                        </div>
+                    </div>
+                    <h1>Reservatie systeem</h1>
+                    <div class="feature-desc">
+                        <div class="feature-icon">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <div class="feature-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ut aperiam et odio, repellat amet ea quis atque enim sit debitis quaerat. Quidem mollitia illum error cumque quasi ea voluptate!</p>
+                        </div>
+                    </div>
+                    <h1>Live druktemeter</h1>
+                    <div class="feature-desc">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <div class="feature-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ut aperiam et odio, repellat amet ea quis atque enim sit debitis quaerat. Quidem mollitia illum error cumque quasi ea voluptate!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-img">
+                    <img src="../../assets/images/barber-man.jpg" alt="barber-man">
+                </div>
+            </div>
+        </section>
+        <section id="service">
+            <div class="title-text">
+                <p>DIENSTEN</p>
+                <h1>Wij bieden meer</h1>
+            </div>
+            <div class="service-box">
+                <div class="single-service">
+                    <img src="../../assets/images/pic-1.jpg" alt="foto1">
+                    <div class="overlay"></div>
+                    <div class="service-desc">
+                        <h3>Haar knippen</h3>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                            Molestiae porro, reprehenderit laborum sint quidem </p>
+                    </div>
+                </div>
+                <div class="single-service">
+                    <img src="../../assets/images/pic-2.jpg" alt="foto2">
+                    <div class="overlay"></div>
+                    <div class="service-desc">
+                        <h3>Baard verzorging</h3>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                            Molestiae porro, reprehenderit laborum sint quidem </p>
+                    </div>
+                </div>
+                <div class="single-service">
+                    <img src="../../assets/images/pic-3.jpg" alt="foto3">
+                    <div class="overlay"></div>
+                    <div class="service-desc">
+                        <h3>Haar knippen in stijl</h3>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                            Molestiae porro, reprehenderit laborum sint quidem </p>
+                    </div>
+                </div>
+                <div class="single-service">
+                    <img src="../../assets/images/pic-4.jpg" alt="foto4">
+                    <div class="overlay"></div>
+                    <div class="service-desc">
+                        <h3>Haar wassen</h3>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                            Molestiae porro, reprehenderit laborum sint quidem </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section #target id="footer">
+            <img src="../../assets/images/footer-img.png" alt="footer" class="footer-img">
+            <div class="title-text">
+                <p>CONTACT</p>
+                <h1>Bezoek vandaag onze kapperzaak</h1>
+            </div>
+            <div class="footer-row">
+                <div class="footer-left">
+                    <h1>Openingsuren</h1>
+                    <p><i class="fa-regular fa-clock"></i>Dinsdag tot vrijdag - 10u tot 19u</p>
+                    <p><i class="fa-regular fa-clock"></i>Zaterdag en zondag - 11u tot 20u</p>
+                </div>
+                <div class="footer-right">
+                    <h1>Neem contact op</h1>
+                    <p>Ellermanstraat 33, 2060 Antwerpen<i class="fa-solid fa-location-dot"></i></p>
+                    <p>Kapperzaak@gmail.com<i class="fa-regular fa-envelope"></i></p>
+                    <p>+32418279370<i class="fa-solid fa-phone"></i></p>
+                </div>
+            </div>
+            <div class="socials-links">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>                
+                <i class="fa-brands fa-twitter"></i>
+                <p>Copyright OnPoint.</p>
+            </div>
+        </section>
+    </body>
+</html>

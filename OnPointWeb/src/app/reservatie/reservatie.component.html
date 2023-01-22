@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <section id="banner">
+    <a href="/"><img class="logo" src="../../assets/images/logo.png" alt="logo"></a>
+    <div id="sideNav">
+        <nav>
+            <label id="hamburger" for="toggle"><img src="../../assets/images/menu.png" alt=""></label>
+            <input type="checkbox" id="toggle"/>
+            <div id="menu">
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a routerLink="/reservatie" routerLinkActive="active" ariaCurrentWhenActive="page">RESERVEREN</a></li>
+                    <li><a routerLink="/druktemeter" routerLinkActive="active" ariaCurrentWhenActive="page">DRUKTEMETER</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="banner-text">
+        <h1>Reserveren</h1>
+        <p>Reserveer hieronder voor uw kapper bezoek</p>
+    </div>
+  </section>
+  <section>
+    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert" *ngIf="registerSucess === true">
+      <h4 class="alert-heading">Bedankt voor uw reservatie {{firstName}} {{lastName}}!</h4>
+      <hr>
+      <p class="mb-0">Uw reservatie voor {{start}} om {{uur}}:{{minuut}} is aangemaakt.</p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert" *ngIf="registerSucess === false" >
+      <h4 class="alert-heading">Deze email adres is reeds al in gebruik.</h4>
+      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <div id="reservatie">
+      <div class="title-text">
+        <div></div>
+        <p>Reservatie</p>
+        <h3>Vul hieronder uw gegevens in</h3>
+      </div>
+  </div>
+
+    <!-- <div class="alert alert-success" role="alert" >
+      Uw reservatie voor {{start}} om {{end}} is aangemaakt!
+    </div> -->
+
+    <div id="booking" class="section">
+      <div class="section-center">
+        <div class="container">
+          <div class="row">
+            <div class="booking-form" >
+              <form  method="get" enctype="text/plain" (ngSubmit)="AddReservation()" #myForm="ngForm">
+                <div class="row no-margin">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label class="form-label">Selecteer dag</label>
+                      <input class="form-control" [(ngModel)]="start" min="{{currentDate | date:'yyyy-MM-dd'}}" max="{{maxDate | date:'yyyy-MM-dd'}}" name="start" type="date" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row no-margin">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label">Selecteer uur</label>
+                      <input class="form-control" [(ngModel)]="uur" name="uur" type="number" min="10" max="19" step="1" value="10" placeholder="Kies een uur" required>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label">Selecteer minuut</label>
+                      <input class="form-control" [(ngModel)]="minuut" name="minuut" type="number" min="00" max="30" step="30" value="00" placeholder="Kies een minuut tussen 0 en 30" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" [class.has-error]="firstNameinput.invalid && firstNameinput.touched" [class.has-success]="firstNameinput.valid">
+                  <label for="firstNameinput" class="form-label">Voornaam <p style="display: inline-block; color: red;">*</p></label>
+                  <input class="form-control" id="firstname" #firstNameinput="ngModel" type="text" [(ngModel)]="firstName" name="firstName" placeholder="Vul uw voornaam in" required>
+                  <p class="help-block" *ngIf="firstNameinput.invalid && firstNameinput.touched" style="color: red;margin-left: 0;">Voornaam is verplicht</p>
+                </div>
+                <div class="form-group"  [class.has-error]="lastnameinput.invalid && lastnameinput.touched" [class.has-success]="lastnameinput.valid">
+                  <span  for="lastnameinput" class="form-label">Naam <p style="display: inline-block; color: red;">*</p></span>
+                  <input class="form-control" type="text" #lastnameinput="ngModel" [(ngModel)]="lastName" name="lastName" placeholder="Vul uw naam in" required>
+                  <p class="help-block" *ngIf="lastnameinput.invalid && lastnameinput.touched" style="color: red;margin-left: 0;">Naam is verplicht</p>
+                </div>
+                <div class="form-group" [class.has-error]="emailinput.invalid && emailinput.touched" [class.has-success]="emailinput.valid">
+                  <span class="form-label">Email <p style="display: inline-block; color: red;">*</p></span>
+                  <input class="form-control" type="text" #emailinput="ngModel" [(ngModel)]="email" name="email" placeholder="Vul uw email in" [email]="email!==''" required>
+                  <p *ngIf="emailinput.errors?.['required'] && emailinput.touched" style="color: red; margin-left: 0;">Email is verplicht</p>
+                  <p class="help-block" *ngIf="emailinput.errors?.['email'] && emailinput.touched" style="color: red; margin-left: 0;">Geen geldige e-mailadres</p>
+                </div>
+                <div class="form-group" [class.has-error]="telefooninput.invalid && telefooninput.touched" [class.has-success]="telefooninput.valid"> 
+                  <span for="telefooninput" class="form-label">Telefoon <p style="display: inline-block; color: red;">*</p></span>
+                  <input class="form-control" type="text" [(ngModel)]="phoneNumber" #telefooninput="ngModel" name="phoneNumber" placeholder="Vul uw telefoonnr. in" required>
+                  <p class="help-block" *ngIf="telefooninput.invalid && telefooninput.touched" style="color: red;margin-left: 0;">Telefoonnummer is verplicht</p>
+                </div>
+                <div class="form-btn">
+                  <button class="submit-btn" [disabled]="!myForm.form.valid" value="Send" style="cursor: pointer;">Book Nu</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    $('#datetimepicker').datetimepicker({
+        format:'Y-m-d H:i',
+        allowTimes:['11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00', '20:00','21:00','22:00','23:00'], 
+        minDate:0
+    });
+    </script>
+</body>
